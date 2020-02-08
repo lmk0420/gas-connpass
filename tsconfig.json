@@ -6,7 +6,7 @@
     "rootDir": ".",
     "lib": [
       "dom",
-      "es2017"
+      "es2015"
   ],
     "alwaysStrict": true,
     "inlineSourceMap": true,
