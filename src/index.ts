@@ -1,3 +1,6 @@
+/**
+ * Get all properties registered in GAS.
+ */
 function getProperties() {
   const properties = PropertiesService.getScriptProperties();
   const SLACK_ACCESS_TOKEN = properties.getProperty("SLACK_ACCESS_TOKEN");

@@ -28,6 +28,9 @@ interface Event {
   series: Series;
 }
 
+/**
+ * Entity of Connpass API.
+ */
 class Connpass {
   results_start: number;
   results_returned: number;

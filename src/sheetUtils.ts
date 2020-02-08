@@ -1,3 +1,6 @@
+/**
+ * Entity of sheet row.
+ */
 class SheetRow {
   keyword: string;
   ymd?: number;
@@ -34,6 +37,9 @@ class SheetRow {
     this.slackIds = slackIds;
   }
 
+  /**
+   * Generate query to access Connnpass API.
+   */
   buildQuery(): string {
     const endpoint = "https://connpass.com/api/v1/event/";
     var query = endpoint + "?keyword=" + this.keyword;
@@ -53,6 +59,10 @@ class SheetRow {
   }
 }
 
+/**
+ * Do GET Request.
+ * @param url URL
+ */
 function doGetRequest(url: string) {
   return UrlFetchApp.fetch(url, {
     method: "get",
@@ -60,6 +70,11 @@ function doGetRequest(url: string) {
   });
 }
 
+/**
+ * Get SpreadSheet.
+ * Returns the sheet corresponding to the sheetId, Returns active sheet when sheetId is null.
+ * @param sheetId sheet id
+ */
 function getSheets(sheetId: string | null) {
   return sheetId
     ? SpreadsheetApp.openById(sheetId)

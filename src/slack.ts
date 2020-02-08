@@ -1,3 +1,6 @@
+/**
+ * Entity of the message to send in Slack.
+ */
 class MessageInfo {
   constructor(
     public slackId: string,
@@ -6,6 +9,12 @@ class MessageInfo {
   ) {}
 }
 
+/**
+ * Send request to Slack webhook.
+ * @param slackId slack id
+ * @param slackWebhookUrl webhook URL
+ * @param message message body
+ */
 function callSlackWebhook(
   slackId: string,
   slackWebhookUrl: string,
