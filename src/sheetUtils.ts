@@ -6,7 +6,7 @@ class SheetRow {
   ymd?: number;
   count?: number;
   order?: number;
-  keywordOr: string;
+  otherKeyword: string;
   slackIds: string[];
 
   constructor(
@@ -14,7 +14,7 @@ class SheetRow {
     ymd: number,
     count: number,
     order: string,
-    keywordOr: string,
+    otherKeyword: string,
     slackIds: string[]
   ) {
     this.keyword = keyword;
@@ -33,7 +33,7 @@ class SheetRow {
       default:
         this.order = 1;
     }
-    this.keywordOr = keywordOr;
+    this.otherKeyword = otherKeyword;
     this.slackIds = slackIds;
   }
 
@@ -43,6 +43,10 @@ class SheetRow {
   buildQuery(): string {
     const endpoint = "https://connpass.com/api/v1/event/";
     var query = endpoint + "?keyword=" + this.keyword;
+
+    if (this.otherKeyword) {
+      query += "," + this.otherKeyword;
+    }
     if (this.ymd) {
       query += "&ymd=" + this.ymd;
     }
@@ -52,9 +56,7 @@ class SheetRow {
     if (this.order) {
       query += "&=order" + this.order;
     }
-    if (this.keywordOr) {
-      query += "&=keywordor" + this.keywordOr;
-    }
+
     return query;
   }
 }
