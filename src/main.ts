@@ -19,7 +19,8 @@ function main() {
         v[2],
         v[3],
         v[4],
-        v.slice(5)
+        v[5] === 1? true : false,
+        v.slice(6)
       );
 
       const query = sheetRow.buildQuery();

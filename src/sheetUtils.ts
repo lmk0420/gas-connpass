@@ -7,6 +7,7 @@ class SheetRow {
   count?: number;
   order?: number;
   otherKeyword: string;
+  isOnline: boolean;
   slackIds: string[];
 
   constructor(
@@ -15,6 +16,7 @@ class SheetRow {
     count: number,
     order: string,
     otherKeyword: string,
+    isOnline: boolean,
     slackIds: string[]
   ) {
     this.keyword = keyword;
@@ -34,6 +36,7 @@ class SheetRow {
         this.order = 1;
     }
     this.otherKeyword = otherKeyword;
+    this.isOnline = isOnline;
     this.slackIds = slackIds;
   }
 
@@ -46,6 +49,10 @@ class SheetRow {
 
     if (this.otherKeyword) {
       query += "," + this.otherKeyword;
+    }
+
+    if (this.isOnline) {
+      query += "," + "オンライン"
     }
     if (this.ymd) {
       query += "&ymd=" + this.ymd;
