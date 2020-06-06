@@ -1,13 +1,11 @@
 function main() {
   const properties = getProperties();
-  if (!properties) {
-    return;
-  }
+  if (!properties) return
   const DATA_SHEET_BEGIN = 1;
-  var sheet = getSheets(properties.SHEET_ID).getSheets()[DATA_SHEET_BEGIN];
+  const sheet = getSheets(properties.SHEET_ID).getSheets()[DATA_SHEET_BEGIN];
 
   const ROW_HEADER = 1;
-  var messageInfos: MessageInfo[] = [];
+  const messageInfos: MessageInfo[] = [];
   sheet
     .getDataRange()
     .getValues()
@@ -25,14 +23,10 @@ function main() {
 
       const query = sheetRow.buildQuery();
       const res = doGetRequest(query);
-      if (res.getResponseCode() !== 200) {
-        return;
-      }
+      if (res.getResponseCode() !== 200) return;
 
       const connpass: Connpass = JSON.parse(res.getContentText("UTF-8"));
-      const messages: string[] = connpass.events.map(event => {
-        return `${event.title}\n${event.event_url}`;
-      });
+      const messages: string[] = connpass.events.map(event => `${event.title}\n${event.event_url}`);
       if (messageInfos.length === 0) {
         sheetRow.slackIds.forEach(slackId => {
           messageInfos.push(
