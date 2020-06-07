@@ -56,7 +56,6 @@ function createBlocks(title: string, messages: string[]) {
       }
     }
   ]
-  Logger.log(messages);
   
   messages.forEach(message => blocks.push({
     type: "section",
